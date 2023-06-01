@@ -10,6 +10,7 @@ class CategoryResource < Avo::BaseResource
   field :title, as: :text
   field :description, as: :textarea
 
-  field :posts, as: :has_many, attach_scope: -> { query.where.not(category_id: parent.id) }
+  field :posts, as: :has_many, attach_scope: -> { query.where.not(category_id: parent.id)
+                                                       .or(query.where(category_id: nil)) }
   # add fields here
 end
