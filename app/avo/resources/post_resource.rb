@@ -1,8 +1,8 @@
 class PostResource < Avo::BaseResource
-  self.title = :id
+  self.title = :tittle
   self.includes = []
-  self.search_query = -> do
-    scope.ransack(id_eq: params[:q], m: "or").result(distinct: false)
+  self.search_query = -> (params:)do
+    scope.ransack(id_eq: params[:q], tittle_cont: params[:q], m: "or").result(distinct: false)
   end
 
   field :id, as: :id
