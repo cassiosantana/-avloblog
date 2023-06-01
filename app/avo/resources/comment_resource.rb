@@ -7,6 +7,9 @@ class CommentResource < Avo::BaseResource
 
   field :id, as: :id
   # Fields generated from the model
+  field :excerpt, as: :text do |model|
+    model.body.truncate 30
+  end
   field :commentable, as: :belongs_to, polymorphic_as: :commentable, types:
     [::Post]
   field :body, as: :textarea
