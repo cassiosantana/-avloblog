@@ -7,6 +7,7 @@ class UserResource < Avo::BaseResource
 
   field :id, as: :id
   # Fields generated from the model
+  field :email, as: :gravatar, link_to_resource: true
   field :name, as: :text
   field :email, as: :text
   # add fields here
