@@ -73,3 +73,5 @@ end
 gem "avo"
 
 gem 'ransack'
+
+gem 'ffaker'
