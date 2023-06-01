@@ -1,7 +1,7 @@
 class CategoryResource < Avo::BaseResource
   self.title = :title
   self.includes = []
-  self.search_query = ->(params:) do
+  self.search_query = -> do
     scope.ransack(id_eq: params[:q], title_cont: params[:q], description_cont: params[:q], m: "or").result(distinct: false)
   end
 
