@@ -9,6 +9,6 @@ class UserResource < Avo::BaseResource
   # Fields generated from the model
   field :email, as: :gravatar, link_to_resource: true, as_avatar: true
   field :name, as: :text
-  field :email, as: :text
+  field :email, as: :text, as_description: true
   # add fields here
 end
