@@ -10,8 +10,6 @@ Post.destroy_all
 Category.destroy_all
 User.destroy_all
 
-post_name_counter = 1
-
 5.times do |category_index|
   category = Category.create!(
     title: "Category #{category_index + 1}",
@@ -19,24 +17,24 @@ post_name_counter = 1
     created_at: Time.now,
     updated_at: Time.now
   )
-
-  5.times do
-    Post.create!(
-      tittle: "Post #{post_name_counter}",
-      body: "Body for Post #{post_name_counter} in Category #{category_index + 1}",
-      created_at: Time.now,
-      updated_at: Time.now,
-      category_id: category.id
-    )
-    post_name_counter += 1
-  end
 end
 
-5.times do |user_index|
-  User.create!(
+10.times do |user_index|
+  user = User.create!(
     name: "User #{user_index + 1}",
     email: "user#{user_index + 1}@example.com",
     created_at: Time.now,
     updated_at: Time.now
   )
+
+  5.times do |post_index|
+    Post.create!(
+      tittle: "Post #{post_index + 1} by User #{user_index + 1}",
+      body: "Body for Post #{post_index + 1} by User #{user_index + 1}",
+      created_at: Time.now,
+      updated_at: Time.now,
+      category_id: Category.all.sample.id,
+      user_id: user.id
+    )
+  end
 end
