@@ -8,6 +8,7 @@ class PostResource < Avo::BaseResource
   field :id, as: :id
   # Fields generated from the model
   field :tittle, as: :text
-  field :body, as: :textarea
+  field :excerpt, as: :text
+  field :body, as: :trix
   # add fields here
 end
