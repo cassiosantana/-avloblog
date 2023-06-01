@@ -6,9 +6,11 @@ class UserResource < Avo::BaseResource
   end
 
   field :id, as: :id
-  # Fields generated from the model
   field :email, as: :gravatar, link_to_resource: true, as_avatar: true
   field :name, as: :text
-  field :email, as: :text, as_description: true
+  field :email, as: :text, as_description: false
+  field :something, as: :text, as_description: true do |model|
+    "Something about this record with id of #{model.id}."
+  end
   # add fields here
 end
