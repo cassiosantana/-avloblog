@@ -12,5 +12,7 @@ class UserResource < Avo::BaseResource
   field :something, as: :text, as_description: true do |model|
     "Something about this record with id of #{model.id}."
   end
+
+  field :posts, as: :has_many
   # add fields here
 end
