@@ -9,6 +9,7 @@
 Post.destroy_all
 Category.destroy_all
 User.destroy_all
+Comment.destroy_all
 
 5.times do |category_index|
   category = Category.create!(
@@ -28,13 +29,22 @@ end
   )
 
   5.times do |post_index|
-    Post.create!(
+    post = Post.create!(
       tittle: "Post #{post_index + 1} by User #{user_index + 1}",
       body: "Body for Post #{post_index + 1} by User #{user_index + 1}",
       created_at: Time.now,
       updated_at: Time.now,
       category_id: Category.all.sample.id,
       user_id: user.id
+    )
+
+    Comment.create!(
+      commentable_type: 'Post',
+      commentable_id: post.id,
+      body: "Comment for Post #{post_index + 1} by User #{user_index + 1}",
+      user_id: user.id,
+      created_at: Time.now,
+      updated_at: Time.now
     )
   end
 end
