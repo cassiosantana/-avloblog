@@ -9,5 +9,7 @@ class CategoryResource < Avo::BaseResource
   # Fields generated from the model
   field :title, as: :text
   field :description, as: :textarea
+
+  field :posts, as: :has_many
   # add fields here
 end
