@@ -12,5 +12,6 @@ class PostResource < Avo::BaseResource
   field :body, as: :trix
 
   field :category, as: :belongs_to
+  field :user, name: 'Author', as: :belongs_to
   # add fields here
 end
