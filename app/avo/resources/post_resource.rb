@@ -10,5 +10,7 @@ class PostResource < Avo::BaseResource
   field :tittle, as: :text
   field :excerpt, as: :text, only_on: :index
   field :body, as: :trix
+
+  field :category, as: :belongs_to
   # add fields here
 end
