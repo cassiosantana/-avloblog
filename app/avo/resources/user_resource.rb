@@ -14,5 +14,6 @@ class UserResource < Avo::BaseResource
   end
 
   field :posts, as: :has_many
+  field :comments, as: :has_many
   # add fields here
 end
