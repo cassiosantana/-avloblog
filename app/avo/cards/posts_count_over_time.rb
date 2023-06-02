@@ -2,8 +2,9 @@ class PostsCountOverTime < Avo::Dashboards::ChartkickCard
   self.id = "posts_count_over_time"
   self.label = "Posts count over time"
   self.chart_type = :area_chart
+  # Other chart_type options can be: line, bar
   # self.description = "Some tiny description"
-  # self.cols = 2
+  self.cols = 2
   # self.initial_range = 30
   # self.ranges = {
   #   "7 days": 7,
