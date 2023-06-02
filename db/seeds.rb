@@ -6,32 +6,34 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require 'ffaker'
+
 Post.destroy_all
 Category.destroy_all
 User.destroy_all
 Comment.destroy_all
 
-5.times do |category_index|
+5.times do
   category = Category.create!(
-    title: "Category #{category_index + 1}",
-    description: "Description for Category #{category_index + 1}",
+    title: FFaker::Book.genre,
+    description: FFaker::Lorem.paragraph,
     created_at: Time.now,
     updated_at: Time.now
   )
 end
 
-10.times do |user_index|
+10.times do
   user = User.create!(
-    name: "User #{user_index + 1}",
-    email: "user#{user_index + 1}@example.com",
+    name: FFaker::Name.name,
+    email: FFaker::Internet.email,
     created_at: Time.now,
     updated_at: Time.now
   )
 
   5.times do |post_index|
     post = Post.create!(
-      tittle: "Post #{post_index + 1} by User #{user_index + 1}",
-      body: "Body for Post #{post_index + 1} by User #{user_index + 1}",
+      tittle: FFaker::Book.title,
+      body: Array.new(3) { FFaker::Lorem.paragraph }.join("\n\n"),
       created_at: Time.now,
       updated_at: Time.now,
       category_id: Category.all.sample.id,
@@ -41,7 +43,7 @@ end
     Comment.create!(
       commentable_type: 'Post',
       commentable_id: post.id,
-      body: "Comment for Post #{post_index + 1} by User #{user_index + 1}",
+      body: FFaker::Lorem.sentence,
       user_id: user.id,
       created_at: Time.now,
       updated_at: Time.now
