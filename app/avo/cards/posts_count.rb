@@ -43,6 +43,6 @@ class PostsCount < Avo::Dashboards::MetricCard
 
     # result User.where(created_at: from..to).count
 
-    result 101
+    result Post.count
   end
 end
