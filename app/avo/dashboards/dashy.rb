@@ -8,5 +8,5 @@ class Dashy < Avo::Dashboards::BaseDashboard
   # end
 
   # cards go here
-  # card UsersCount
+  card PostsCount
 end
