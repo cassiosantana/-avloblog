@@ -21,17 +21,12 @@ class PostsCountOverTime < Avo::Dashboards::ChartkickCard
   # self.flush = true
 
   def query
-    points = 16
-    i = Time.new.year.to_i - points
-    base_data = Array.new(points).map do
-      i += 1
-      [i.to_s, rand(0..20)]
-    end.to_h
-
     result [
-      { name: "batch 1", data: base_data.map { |k, v| [k, rand(0..20)] }.to_h },
-      { name: "batch 2", data: base_data.map { |k, v| [k, rand(0..40)] }.to_h },
-      { name: "batch 3", data: base_data.map { |k, v| [k, rand(0..10)] }.to_h }
+      { name: "Posts count over time", data: {
+        May: Post.where(created_at: (Time.now - 1.month)..).count,
+        April: Post.where(created_at: (Time.now - 2.month)..).count,
+        March: Post.where(created_at: (Time.now - 3.month)..).count,
+      } },
     ]
   end
 end
