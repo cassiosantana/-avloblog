@@ -103,6 +103,10 @@ Avo.configure do |config|
         resource :comments
         resource :categories
       end
+
+      group "Admin" do
+        resource :users
+      end
     end
 
     section "Tools", icon: "tools" do
