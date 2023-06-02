@@ -98,9 +98,11 @@ Avo.configure do |config|
 
     section "Resources", icon: "resources" do
       # all_resources
-      resource :posts
-      resource :comments
-      resource :categories
+      group "Blog" do
+        resource :posts
+        resource :comments
+        resource :categories
+      end
     end
 
     section "Tools", icon: "tools" do
