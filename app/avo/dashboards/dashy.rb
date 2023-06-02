@@ -9,4 +9,5 @@ class Dashy < Avo::Dashboards::BaseDashboard
 
   # cards go here
   card PostsCount
+  card PostsCountOverTime
 end
