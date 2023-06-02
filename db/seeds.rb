@@ -10,8 +10,8 @@ require 'ffaker'
 
 Post.destroy_all
 Category.destroy_all
-User.destroy_all
 Comment.destroy_all
+User.destroy_all
 
 5.times do
   category = Category.create!(
