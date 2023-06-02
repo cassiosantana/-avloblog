@@ -91,19 +91,31 @@ Avo.configure do |config|
   # end
 
   ## == Menus ==
-  # config.main_menu = -> {
-  #   section "Dashboards", icon: "dashboards" do
-  #     all_dashboards
-  #   end
+  config.main_menu = -> {
+    section "Dashboards", icon: "dashboards" do
+      all_dashboards
+    end
 
-  #   section "Resources", icon: "resources" do
-  #     all_resources
-  #   end
+    section "Resources", icon: "resources" do
+      # all_resources
+      group "Blog" do
+        resource :posts
+        resource :comments
+        resource :categories
+      end
 
-  #   section "Tools", icon: "tools" do
-  #     all_tools
-  #   end
-  # }
+      group "Admin" do
+        resource :users
+      end
+
+      # dashboard :dashy
+
+    end
+
+    section "Tools", icon: "tools" do
+      all_tools
+    end
+  }
   # config.profile_menu = -> {
   #   link "Profile", path: "/avo/profile", icon: "user-circle"
   # }
