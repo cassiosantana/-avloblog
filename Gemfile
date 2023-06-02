@@ -75,3 +75,5 @@ gem "avo"
 gem 'ransack'
 
 gem 'ffaker'
+
+gem "chartkick"
