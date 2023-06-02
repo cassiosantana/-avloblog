@@ -107,6 +107,9 @@ Avo.configure do |config|
       group "Admin" do
         resource :users
       end
+
+      # dashboard :dashy
+
     end
 
     section "Tools", icon: "tools" do
