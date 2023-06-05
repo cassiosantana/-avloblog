@@ -1,6 +1,7 @@
 class DuplicatePost < Avo::BaseAction
   self.name = "Duplicate post"
   self.message = "Are you sure you want to duplicate this post?"
+  self.confirm_button_label = "Duplicate"
 
   self.visible = -> do
     view == :show
