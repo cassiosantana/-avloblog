@@ -25,4 +25,5 @@ class UserResource < Avo::BaseResource
 
   filter ActiveUserFilter
   filter ActiveUserSelectFilter
+  filter ActiveUserMultipleSelectFilter
 end
