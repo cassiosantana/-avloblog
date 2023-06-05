@@ -18,4 +18,7 @@ class UserResource < Avo::BaseResource
   field :posts, as: :has_many
   field :comments, as: :has_many
   # add fields here
+
+  action ToggleActive
+  action DuplicateUser
 end

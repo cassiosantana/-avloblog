@@ -14,39 +14,43 @@ Comment.destroy_all
 User.destroy_all
 
 5.times do
-  category = Category.create!(
+  category_created_at = FFaker::Time.between(1.year.ago, 6.months.ago)
+  Category.create!(
     title: FFaker::Book.genre,
     description: FFaker::Lorem.paragraph,
-    created_at: Time.now,
-    updated_at: Time.now
+    created_at: category_created_at,
+    updated_at: category_created_at
   )
 end
 
 10.times do
+  user_created_at = FFaker::Time.between(6.months.ago, 1.month.ago)
   user = User.create!(
     name: FFaker::Name.name,
     email: FFaker::Internet.email,
-    created_at: Time.now,
-    updated_at: Time.now
+    created_at: user_created_at,
+    updated_at: user_created_at
   )
 
   5.times do |post_index|
+    post_created_at = FFaker::Time.between(user_created_at, Time.now)
     post = Post.create!(
       tittle: FFaker::Book.title,
       body: Array.new(3) { FFaker::Lorem.paragraph }.join("\n\n"),
-      created_at: Time.now,
-      updated_at: Time.now,
+      created_at: post_created_at,
+      updated_at: post_created_at,
       category_id: Category.all.sample.id,
       user_id: user.id
     )
 
+    comment_created_at = FFaker::Time.between(post_created_at, Time.now)
     Comment.create!(
       commentable_type: 'Post',
       commentable_id: post.id,
       body: FFaker::Lorem.sentence,
       user_id: user.id,
-      created_at: Time.now,
-      updated_at: Time.now
+      created_at: comment_created_at,
+      updated_at: comment_created_at
     )
   end
 end
