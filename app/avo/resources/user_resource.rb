@@ -24,4 +24,5 @@ class UserResource < Avo::BaseResource
   action DuplicateUser
 
   filter ActiveUserFilter
+  filter ActiveUserSelectFilter
 end
