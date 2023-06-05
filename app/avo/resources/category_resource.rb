@@ -16,4 +16,6 @@ class CategoryResource < Avo::BaseResource
   field :posts, as: :has_many, attach_scope: -> { query.where.not(category_id: parent.id)
                                                        .or(query.where(category_id: nil)) }
   # add fields here
+
+  action DuplicateCategory
 end
