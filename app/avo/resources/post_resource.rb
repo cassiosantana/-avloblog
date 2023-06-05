@@ -36,4 +36,6 @@ class PostResource < Avo::BaseResource
   # add fields here
 
   # self.hide_from_global_search = true
+
+  action DuplicatePost
 end
