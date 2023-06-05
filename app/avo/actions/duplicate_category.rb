@@ -10,7 +10,7 @@ class DuplicateCategory < Avo::BaseAction
 
     models.each do |model|
       duplicated_category = model.dup
-      if duplicated_category
+      if duplicated_category.save!
         redirect_to "/avo/dashboards/dashy"
         silent
       end
