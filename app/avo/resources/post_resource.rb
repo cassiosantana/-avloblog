@@ -25,7 +25,7 @@ class PostResource < Avo::BaseResource
   end
 
   field :excerpt, as: :text, only_on: :index, as_description: true do |model|
-    ActionView::Base.full_sanitizer.sanitize(model.body).truncate 130
+    ActionView::Base.full_sanitizer.sanitize(model.body).truncate 30
   rescue
     ""
   end
