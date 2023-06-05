@@ -11,6 +11,7 @@ class UserResource < Avo::BaseResource
   field :email, as: :gravatar, link_to_resource: true, as_avatar: true
   field :name, as: :text
   field :email, as: :text, as_description: false
+  field :active, as: :boolean
   field :something, hide_on: :all, as: :text, as_description: true do |model|
     "Something about this record with id of #{model.id}."
   end
