@@ -1,9 +1,7 @@
 class DuplicateUser < Avo::BaseAction
   self.name = "Duplicate user"
   self.message = "Are you sure you want to duplicate this user?"
-  # self.visible = -> do
-  #   true
-  # end
+  self.visible = -> { view == :show }
 
   def handle(**args)
     models, fields = args.values_at(:models, :fields)
