@@ -10,5 +10,10 @@ class DuplicateUser < Avo::BaseAction
       duplicated_user = model.dup
       duplicated_user.save!
     end
+
+    succeed "Success response ✌️"
+    warn "Warning response ✌️"
+    inform "Info response ✌️"
+    error "Error response ✌️"
   end
 end
