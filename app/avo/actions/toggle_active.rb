@@ -13,15 +13,14 @@ class ToggleActive < Avo::BaseAction
     models.each do |model|
       if model.active
         model.update active: false
+        succeed "Done! User marked as inactive!"
       else
         model.update active: true
+        succeed "Done! User marked as active!"
       end
 
       # Optionally, you may send a notification with the message to that user.
       # UserMailer.with(user: model).toggle_active(fields["message"]).deliver_later
     end
-
-    succeed 'Perfect!'
   end
-
 end
