@@ -5,7 +5,8 @@ class DuplicateUser < Avo::BaseAction
   #   true
   # end
 
-  def handle(models:, **)
+  def handle(**args)
+    models, fields = args.values_at(:models, :fields)
 
     models.each do |model|
       duplicated_user = model.dup
