@@ -96,27 +96,37 @@ Avo.configure do |config|
       all_dashboards
     end
 
-    section "Resources", icon: "resources" do
+    section "Resources", icon: "heroicons/outline/academic-cap", collapsable: true, collapsed: true do
       # all_resources
-      group "Blog" do
-        resource :posts
+      group "Blog", collapsable: true, collapsed: true  do
+        resource :posts, data: {turbo: false}
         resource :comments
         resource :categories
       end
 
-      group "Admin" do
+      group "Admin", collapsable: true, collapsed:true do
         resource :users
       end
 
-      # dashboard :dashy
+      dashboard :dashy, visible: -> do
+        false
+        # current_user.admin?
+      end
 
     end
 
     section "Tools", icon: "tools" do
       all_tools
     end
+
+    link_to "Google", path: "https://google.com", target: :_blank
+
+
   }
-  # config.profile_menu = -> {
-  #   link "Profile", path: "/avo/profile", icon: "user-circle"
-  # }
+
+  config.profile_menu = -> {
+    link "Profile", path: "/avo/profile", icon: "user-circle"
+  }
+
+  config.disabled_features = [:global_search]
 end
