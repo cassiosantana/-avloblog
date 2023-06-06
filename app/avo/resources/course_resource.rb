@@ -7,8 +7,9 @@ class CourseResource < Avo::BaseResource
 
   field :id, as: :id
   field :country, as: :text
+  field :city, as: :text
   # add fields here
 
   filter CourseCountryFilter
-  # filter CourseCityFilter
+  filter CourseCityFilter
 end
