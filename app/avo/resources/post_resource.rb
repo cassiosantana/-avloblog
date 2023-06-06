@@ -40,4 +40,5 @@ class PostResource < Avo::BaseResource
   action DuplicatePost
 
   filter AuthorPostsFilter
+  filter PostTitleFiler
 end
