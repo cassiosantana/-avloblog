@@ -6,6 +6,6 @@ class PostTitleFiler < Avo::Filters::TextFilter
   # end
 
   def apply(request, query, value)
-    query
+    query.where('LOWER(tittle) LIKE ?', "%#{value}%")
   end
 end
