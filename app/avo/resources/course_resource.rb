@@ -6,6 +6,7 @@ class CourseResource < Avo::BaseResource
   # end
 
   field :id, as: :id
+  field :name, as: :text
   field :country, as: :text
   field :city, as: :text
   # add fields here
