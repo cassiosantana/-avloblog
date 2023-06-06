@@ -19,32 +19,29 @@ class PostsCount < Avo::Dashboards::MetricCard
   # self.suffix = ""
 
   def query
-    # from = Date.today.midnight - 1.week
-    # to = DateTime.current
-
-    # if range.present?
-    #   if range.to_s == range.to_i.to_s
-    #     from = DateTime.current - range.to_i.days
-    #   else
-    #     case range
-    #     when "TODAY"
-    #       from = DateTime.current.beginning_of_day
-    #     when "MTD"
-    #       from = DateTime.current.beginning_of_month
-    #     when "QTD"
-    #       from = DateTime.current.beginning_of_quarter
-    #     when "YTD"
-    #       from = DateTime.current.beginning_of_year
-    #     when "ALL"
-    #       from = Time.at(0)
-    #     end
-    #   end
-    # end
-
-    # result User.where(created_at: from..to).count
+    from = nil
 
     if range.present?
-      result Post.where(created_at: (Time.now - range.to_i.days)..).count
+      if range.to_s == range.to_i.to_s
+        from = Time.now - range.to_i.days
+      else
+        case range
+        when "TODAY"
+          from = Time.now.beginning_of_day
+        when "MTD"
+          from = Time.now.beginning_of_month
+        when "QTD"
+          from = Time.now.beginning_of_quarter
+        when "YTD"
+          from = Time.now.beginning_of_year
+        when "ALL"
+          from = Time.at(0)
+        end
+      end
+    end
+
+    if from
+      result Post.where(created_at: from..).count
     else
       result Post.count
     end
