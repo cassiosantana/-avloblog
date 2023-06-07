@@ -9,6 +9,23 @@ class CourseCityFilter < Avo::Filters::BooleanFilter
     cities_for_countries countries
   end
 
+  def react
+    # Check if the user selected a country
+    if applied_filters["CourseCountryFilter"].present? && applied_filters["CourseCityFilter"].blank?
+      # Get the selected countries, get their cities, and select the first one.
+      selected_countries = applied_filters["CourseCountryFilter"].select do |name, selected|
+        selected
+      end
+
+      # Get the first city
+      cities = cities_for_countries(selected_countries.keys)
+      first_city = cities.first.first
+
+      # Return the first city as selected
+      [[first_city, true]].to_h
+    end
+  end
+
   private
 
   # Get a hash of cities for certain countries
