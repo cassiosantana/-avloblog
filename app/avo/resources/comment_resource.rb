@@ -19,4 +19,9 @@ class CommentResource < Avo::BaseResource
     warning: 'Pending',
     danger: 'Spam'
   }
+  field :status, as: :select, hide_on: [:show, :index], options: {
+    'Published': 'Published',
+    'Pending': 'Pending',
+    'Spam': 'Spam'
+  }, placeholder: 'Choose the stage.'
 end
