@@ -12,6 +12,7 @@ Post.destroy_all
 Category.destroy_all
 Comment.destroy_all
 User.destroy_all
+Course.destroy_all
 
 5.times do
   category_created_at = FFaker::Time.between(1.year.ago, 6.months.ago)
@@ -51,6 +52,29 @@ end
       user_id: user.id,
       created_at: comment_created_at,
       updated_at: comment_created_at
+    )
+  end
+end
+
+cities_by_country = {
+  'USA' => ["New York", "Los Angeles", "San Francisco", "Boston", "Philadelphia"],
+  'Japan' => ["Tokyo", "Osaka", "Kyoto", "Hiroshima", "Yokohama", "Nagoya", "Kobe"],
+  'Spain' => ["Madrid", "Valencia", "Barcelona"],
+  'Thailand' => ["Chiang Mai", "Bangkok", "Phuket"]
+}
+
+# Método para gerar um nome de curso aleatório
+def random_course_name
+  "#{FFaker::Lorem.word.capitalize} #{FFaker::Lorem.word.capitalize} #{FFaker::Education.degree_short}"
+end
+
+# Criar um registro de Course para cada cidade
+cities_by_country.each do |country, cities|
+  cities.each do |city|
+    Course.create!(
+      name: random_course_name,
+      country: country,
+      city: city
     )
   end
 end

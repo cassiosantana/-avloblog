@@ -104,6 +104,10 @@ Avo.configure do |config|
         resource :categories
       end
 
+      group "Learn" do
+        resource :courses
+      end
+
       group "Admin", collapsable: true, collapsed:true do
         resource :users
       end

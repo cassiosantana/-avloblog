@@ -38,4 +38,7 @@ class PostResource < Avo::BaseResource
   # self.hide_from_global_search = true
 
   action DuplicatePost
+
+  filter AuthorPostsFilter
+  filter PostTitleFiler
 end
