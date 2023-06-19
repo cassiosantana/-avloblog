@@ -30,7 +30,8 @@ end
     name: FFaker::Name.name,
     email: FFaker::Internet.email,
     created_at: user_created_at,
-    updated_at: user_created_at
+    updated_at: user_created_at,
+    active: [true, false].sample
   )
 
   5.times do |post_index|
@@ -44,6 +45,7 @@ end
       user_id: user.id
     )
 
+    status_options = ['Published', 'Pending', 'Spam']
     comment_created_at = FFaker::Time.between(post_created_at, Time.now)
     Comment.create!(
       commentable_type: 'Post',
@@ -51,7 +53,8 @@ end
       body: FFaker::Lorem.sentence,
       user_id: user.id,
       created_at: comment_created_at,
-      updated_at: comment_created_at
+      updated_at: comment_created_at,
+      status: status_options.sample
     )
   end
 end

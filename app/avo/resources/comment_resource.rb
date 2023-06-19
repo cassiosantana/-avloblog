@@ -14,5 +14,14 @@ class CommentResource < Avo::BaseResource
     [::Post]
   field :body, as: :textarea
   field :user, as: :belongs_to
-  # add fields here
+  field :status, as: :badge, options: {
+    success: 'Published',
+    warning: 'Pending',
+    danger: 'Spam'
+  }
+  field :status, as: :select, hide_on: [:show, :index], options: {
+    'Published': 'Published',
+    'Pending': 'Pending',
+    'Spam': 'Spam'
+  }, placeholder: 'Choose the stage.'
 end
